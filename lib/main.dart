@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:logehub/HomePage/DashBoard.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of the application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      home: HomePage(),
+    );
+  }
+}
+
+/*class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
-}
+}*/
 
-class _MyAppState extends State<MyApp> {
+/*class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
   bool get useLightMode {
@@ -32,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Demo',
+      title: 'Logistics Hub',
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
@@ -43,7 +59,7 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: _themeMode,
       home: MyHomePage(
-        title: 'Material 3 Demo',
+        title: 'Logistics hub',
         useLightMode: useLightMode,
         handleBrightnessChange: (useLightMode) => setState(() {
           _themeMode = useLightMode ? ThemeMode.light : ThemeMode.dark;
@@ -51,7 +67,7 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-}
+}*/
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
