@@ -1,56 +1,14 @@
 import 'package:logehub/Classes/Entity/user.dart';
+import 'package:logehub/DioClass/dio.dart';
 
 class UserFunctions {
+  DioClass dioClass = DioClass();
+
   //Check if the phone no already exists.
   checkPhoneNo(String phoneNo) async {
-    return ["200", "Test"];
+    String filter = Uri.encodeFull('{"phoneno":{"equals":"$phoneNo"}}');
+    await dioClass.getDioResponse(filter.replaceAll(':', '%3A'), "1");
   }
-  /*checkPhoneNo(String phoneNo) async {
-    var headers = {
-      'Content-Type': 'application/json',
-      'api-key':
-          'sFJvC53d4Zj3SSCvdVMK3D9I5lcjbI0GBzRewwJ4y29H1CPMCedOHDnEcrlDx1q9',
-      'Accept': 'application/json'
-    };
-    var data = json.encode({
-      "dataSource": "Cluster0",
-      "database": "logehub",
-      "collection": "user",
-      "filter": {
-        "phoneno": phoneNo,
-      }
-    });
-
-    var dio = Dio();
-    dio.options.connectTimeout = const Duration(seconds: 20);
-    var response = await dio.request(
-      'https://ap-south-1.aws.data.mongodb-api.com/app/data-oblcp/endpoint/data/v1/action/findOne',
-      options: Options(
-        method: 'POST',
-        headers: headers,
-      ),
-      data: data,
-    );
-
-    try {
-      //Document Details  Received
-
-      Map<String, dynamic> userDocument = response.data;
-      //If no Document Received Return with no value
-      if (userDocument.values.first == null) {
-        return [response.statusCode, response.statusMessage];
-      }
-
-      //Get the Id and name from the Document
-      //LoginUser.fromJson(userDocument.values.first as Map<String, dynamic>);
-      LoginUser user = LoginUser();
-      user.fromJson(userDocument.values.first as Map<String, dynamic>);
-      //Put the Details in the Session Management
-      return [response.statusCode, response.statusMessage];
-    } on Exception catch (error) {
-      return error.toString();
-    }
-  }*/
 
   //If it is a new No, Save the Number.
   /*savePhoneNo(String phoneNo) async {
