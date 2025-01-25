@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'package:your_app_name/login/user.dart';
+import 'package:logehub/Classes/Entity/user.dart';
 import 'package:logehub/main.dart';
+import 'package:logehub/User/Login.dart';
 //import 'package:your_app_name/login/login.dart';
 //import 'package:your_app_name/login/profile.dart';
 
@@ -30,7 +31,7 @@ class LogEHubAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class _CustomAppBarState extends State<LogEHubAppBar> {
   TextEditingController txtUserName = TextEditingController();
-  //final LoginUser user = LoginUser();
+  final LoginUser user = LoginUser();
 
   @override
   void initState() {
@@ -58,7 +59,7 @@ class _CustomAppBarState extends State<LogEHubAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    //txtUserName.text = user.name;
+    txtUserName.text = user.name;
 
     return AppBar(
       title: const Text(
@@ -79,12 +80,15 @@ class _CustomAppBarState extends State<LogEHubAppBar> {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
-                //if (user.id.isEmpty) {
-                if (1 == 2) {
-                  //Do Nothing
-                  //Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                if (user.id.isEmpty) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
                 } else {
-                  //Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+                  //Do Nothing
+                  //Navigator.push(
+                  //    context,
+                  //MaterialPageRoute(
+                  //    builder: (context) => const ProfileScreen()));
                 }
               },
               child: Row(children: [
