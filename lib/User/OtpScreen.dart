@@ -59,10 +59,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     var check =
                         await (UserFunctions()).checkPhoneNo(phoneNo).then;
 
-                    print(check);
-
                     otpVerificationController.text = check.toString();
-                    //print(check);
 
                     if (check != null) {
                       otpVerificationController.text = user.name.toString();

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:logehub/Classes/Entity/user.dart';
 import 'package:logehub/main.dart';
 import 'package:logehub/User/Login.dart';
-//import 'package:your_app_name/login/login.dart';
-//import 'package:your_app_name/login/profile.dart';
 
 class LogEHubAppBar extends StatefulWidget implements PreferredSizeWidget {
   LogEHubAppBar({Key? key})

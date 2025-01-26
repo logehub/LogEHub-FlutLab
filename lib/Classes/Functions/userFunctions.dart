@@ -1,5 +1,6 @@
-import 'package:logehub/Classes/Entity/user.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logehub/DioClass/dio.dart';
+import 'package:logehub/Classes/Entity/user.dart';
 
 class UserFunctions {
   DioClass dioClass = DioClass();
@@ -7,7 +8,20 @@ class UserFunctions {
   //Check if the phone no already exists.
   checkPhoneNo(String phoneNo) async {
     String filter = Uri.encodeFull('{"phoneno":{"equals":"$phoneNo"}}');
-    await dioClass.getDioResponse(filter.replaceAll(':', '%3A'), "1");
+    var apiResponse =
+        await dioClass.getDioResponse(filter.replaceAll(':', '%3A'), "1");
+    print(apiResponse[0]);
+    LoginUser user = LoginUser();
+    if (apiResponse[0] == "1") {
+      //print(apiResponse[1]);
+      try {
+        Map<String, dynamic> userMap = apiResponse[1] as Map<String, dynamic>;
+        //print(userMap.values.first[0]);
+        user.fromJson(userMap.values.first[0]);
+      } on Exception catch (error) {
+        print(error.toString());
+      }
+    }
   }
 
   //If it is a new No, Save the Number.

@@ -1,5 +1,3 @@
-//import 'dart:convert';
-//import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginUser {
@@ -20,9 +18,11 @@ class LoginUser {
   String email = "";
   String companyId = "";
   String companyName = "";
+  String authemailid = "";
 
   fromJson(Map<String, dynamic> json) {
-    id = json["_id"];
+    authemailid = "${json["authemailid"]}";
+    id = json["id"];
     phoneNo = json["phoneno"];
     name = json["name"] == null ? "" : "${json["name"]}";
     email = json["email"] == null ? "" : "${json["email"]}";
